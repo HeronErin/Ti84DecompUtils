@@ -1,4 +1,3 @@
-sample = "PlySmlt2.8xk"
 import struct
 
 deviceTypeLookup = {
@@ -64,5 +63,12 @@ def decode8XK(file):
         "checkSum": checkSum,
         "intelHex": intelHex
     }
+def handlePages(intelHex):
+    pages = []
+    for line in intelHex.split(b"\r\n"):
+        print(line[1+2:])
 
-print(decode8XK(sample))
+
+
+decoded = decode8XK("PlySmlt2.8xk")
+handlePages(decoded["intelHex"])
